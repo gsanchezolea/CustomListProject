@@ -9,7 +9,8 @@ namespace CustomList
     public class CustomList<T>
     {
         T[] array;
-        public int Count;
+        private int count = 0;
+        public int Count { get { return count; } }
         public int Capacity;
         public int AddedCapacity;
         
@@ -17,9 +18,9 @@ namespace CustomList
 
         public CustomList()
         {
-            Capacity = 4;
-            Count = 0;
+            Capacity = 4;       
             AddedCapacity = 2;
+           
 
             array = new T[Capacity];            
         }
@@ -28,14 +29,14 @@ namespace CustomList
         public void Add(T parameter)
         {
 
-            if (Count == Capacity)
+            if (count == Capacity)
             {
                 IncreaseCapacity();
                 CopyTo();
                
             }
-            array[Count] = parameter;
-            Count++;
+            array[count] = parameter;
+            count++;
 
         }
         public void IncreaseCapacity()
@@ -46,7 +47,7 @@ namespace CustomList
         {
             T[] collection = array;
             array = new T[Capacity];
-            for (int i = 0; i < Count; i++)
+            for (int i = 0; i < count; i++)
             {
                 array[i] = collection[i];
             }
