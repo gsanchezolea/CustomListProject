@@ -63,6 +63,23 @@ namespace CustomList
                 array[i] = value; 
             }
         }
+
+        public void Remove(T parameter)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                if (array[i].Equals(parameter))
+                {
+                    array[i].Equals(default);
+                    for (int j = i; j < count; j++)
+                    {
+                        array[i].Equals(array[i + 1]);
+                    }
+                    array[i].Equals(default);
+                    count--;                 
+                }
+            }            
+        }
     }
 }
 
