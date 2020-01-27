@@ -114,9 +114,8 @@ namespace CustomListUnitTestProject
             //Assert
             Assert.AreEqual(expected, actual);
         }
-    }
-    public class RemoveMethodTests
-    {
+
+
         [TestMethod]
         public void Remove_TwoElementsAfterAddingFiveElements_CountShouldReturnThree()
         {
@@ -159,8 +158,8 @@ namespace CustomListUnitTestProject
             newList.Add(inputValueThree);
             newList.Add(inputValueFour);
             newList.Add(inputValueFive);
-            newList.Remove[3];
-            actual = newList[3];
+            newList.Remove(inputValueThree);
+            actual = newList[2];
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -189,6 +188,7 @@ namespace CustomListUnitTestProject
             //Assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
         public void Remove_AllElementsInAFiveElementList_CountShouldDisplayZero()
         {
             //Arrange
@@ -213,7 +213,7 @@ namespace CustomListUnitTestProject
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-            public void Remove_AllElementsInAFiveElementList_ValueAtIndexFourShouldBeZero()
+        public void Remove_AllElementsInAFiveElementList_ValueAtIndexFourShouldBeZero()
         {
             //Arrange
             CustomList<int> newList = new CustomList<int>();
@@ -233,6 +233,28 @@ namespace CustomListUnitTestProject
             newList.Remove(inputValue);
             newList.Remove(inputValue);
             actual = newList[4];
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void String_ThreeIntElements_ElementsShouldBeStrungTogether()
+        {
+            //Arrange
+            CustomList<int> newList = new CustomList<int>();
+            int inputValueOne = 1;
+            int inputValueTwo = 2;
+            int inputValueThree = 3;
+            string expected = "123";
+            string actual;
+
+
+            //Act
+            newList.Add(inputValueOne);
+            newList.Add(inputValueTwo);
+            newList.Add(inputValueThree);
+            actual = newList.ToString();
+            
+
             //Assert
             Assert.AreEqual(expected, actual);
         }
