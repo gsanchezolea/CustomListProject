@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-    class Program 
+    class RemoveMethodTests
     {
-        static void Main(string[] args)
-        {
-
-        }
     }
 }

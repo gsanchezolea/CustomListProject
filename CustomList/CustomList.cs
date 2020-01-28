@@ -20,26 +20,18 @@ namespace CustomList
         {
             Capacity = 4;
             AddedCapacity = 2;
-
-
             array = new T[Capacity];
-           // newString = new StringBuilder(" ",100);
-           
         }
-
         //Member Variables
         public void Add(T parameter)
         {
-
             if (count == Capacity)
             {
                 IncreaseCapacity();
                 CopyTo();
-
             }
             array[count] = parameter;
             count++;
-
         }
         public void IncreaseCapacity()
         {
@@ -54,6 +46,7 @@ namespace CustomList
                 array[i] = collection[i];
             }
         }
+        //Indexer
         public T this[int i]
         {
             get
@@ -65,13 +58,10 @@ namespace CustomList
                 array[i] = value;
             }
         }
-
         public bool Remove(T parameter)
         {
             bool initiateTransfer = false;
-
-
-            for (int i = 0; i < count - 1; i++)
+            for (int i = 0; i < count; i++)
             {
                 if (array[i].Equals(parameter))
                 {
@@ -79,40 +69,70 @@ namespace CustomList
                 }
                 if (initiateTransfer == true)
                 {
-                    array[i] = array[i + 1];
-                    array[i + 1] = default;
+                    if (count == i + 1)
+                    {
+                        array[i] = default;
+                        count--;
+                    }
+                    else
+                    {
+                        array[i] = array[i + 1];                       
+                    }
+                    
                 }
-            }
-            count--;
-
-            EliminateLastValue();
+                
+            }           
             return initiateTransfer;
+        }
 
-        }
-        public void EliminateLastValue()
-        {
-            if (count == 0)
-            {
-                array[0] = default;
-            }
-        }
         public override string ToString()
         {
-            StringBuilder newString = new StringBuilder();
-
+            StringBuilder newSB = new StringBuilder(100);
             for (int i = 0; i < count; i++)
             {
-                newString.Append(array[i]);
+                if ((i + 1) == count)
+                {
+                    newSB.Append(array[i]);
+                }
+                else
+                {
+                    newSB.Append(array[i]);
+                    newSB.Append(" ");
+                }
             }
-            return newString.ToString();
-            //foreach (T item in array)
-            //{
-            //    newString.Append(item);
-            //}
-            //return newString.ToString();
+            return newSB.ToString();
+        }
+        public static CustomList<T> operator +(CustomList<T> listOne, CustomList<T> listTwo)
+        {
+            CustomList<T> customList = new CustomList<T>();
+            for (int i = 0; i < listOne.count; i++)
+            {
+                customList.Add(listOne[i]);
+            }
+            for (int i = 0; i < listTwo.count; i++)
+            {
+                customList.Add(listTwo[i]);
+            }
+            return customList;
+
+        }
+        public static CustomList<T> operator -(CustomList<T> listOne, CustomList<T> listTwo)
+        {
+            CustomList<T> customList = new CustomList<T>();
+
+            for (int i = 0; i < listOne.count; i++)
+            {              
+                customList.Add(listOne[i]);
+                for (int j = 0; j < listTwo.count; j++)
+                {
+                    customList.Remove(listTwo[j]);
+                }
+            }
+            return customList;
         }
     }
 }
 
-
+//if(customList[i].Equal(listTwo))
+//customList.Remove(listTwo[j]);
 
