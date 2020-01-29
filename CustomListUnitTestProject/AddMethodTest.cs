@@ -444,13 +444,35 @@ namespace CustomListUnitTestProject
             //Assert
             Assert.AreEqual(expected, actual);
         }
-        //[TestMethod]
-        //public void MinusOperator_RemoveNothingFromListOne_ValueReturnedShouldBeTheSameAsListOne()
-        //{
-
-        //}
+        [TestMethod]
+        public void Zip_TwoEvenLists_FinalListWillTakeInBothValues()
+        {
+            //Arrange
+            CustomList<int> listOne = new CustomList<int>();
+            CustomList<int> listTwo = new CustomList<int>();
+            CustomList<int> listThree;
+            string expected = "1 2 3 4 5 6 7 8 9 10";
+            string actual;
+            //Act
+            listOne.Add(1);
+            listOne.Add(3);
+            listOne.Add(5);
+            listOne.Add(7);
+            listOne.Add(9);
+            listTwo.Add(2);
+            listTwo.Add(4);
+            listTwo.Add(6);
+            listTwo.Add(8);
+            listTwo.Add(10);
+         
+            listThree.Zip(listOne, listTwo);
+            actual = listThree.ToString();
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
+
 
 
 

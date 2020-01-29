@@ -130,9 +130,32 @@ namespace CustomList
             }
             return customList;
         }
+        //Add a stopping point Count possibly
+        public CustomList<T> Zip(CustomList<T> listOne, CustomList<T> listTwo)
+        {
+            CustomList<T> customList = new CustomList<T>();
+            
+            for (int i = 0; i < customList.CheckSize( listOne, listTwo); i++)
+            {
+                
+                customList.Add(listOne[i]);
+                customList.Add(listTwo[i]);
+            }
+            return customList;
+        }
+        public int CheckSize(CustomList<T> listOne, CustomList<T> listTwo)
+        {
+            if(listOne.count>listTwo.count)
+            {
+                return listOne.count;
+            }
+            else
+            {
+                return listTwo.count;
+            }
+        }
     }
 }
 
-//if(customList[i].Equal(listTwo))
-//customList.Remove(listTwo[j]);
+
 
